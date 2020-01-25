@@ -1,20 +1,21 @@
+
 import React, { Component } from 'react';
 
-class Admin extends Component{
+class Admin extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = { 
+    constructor(props) {
+      super(props);
+      this.state = { 
 
-    };
+      };
+    }
+  
+    render() {
+        return (
+            <div>
+                <h1>Hellos whats popping admin</h1>
+            </div>
+        )
+    }
   }
-
-  render() {
-    return (
-        <h1>Hello Whats going On Admin</h1>
-    )
-  }
-
-}
-
-export default Admin;
+  export default Admin;
