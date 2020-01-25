@@ -1,0 +1,93 @@
+[
+    {
+        "username": "F",
+        "priority": "6",
+        "timeRequest": [
+            1,
+            7,
+            3,
+            4,
+            5,
+            6,
+            2
+        ]
+    },
+    {
+        "username": "G",
+        "priority": "7",
+        "timeRequest": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+        ]
+    },
+    {
+        "username": "D",
+        "priority": "4",
+        "timeRequest": [
+            2,
+            3,
+            1,
+            4,
+            5,
+            6,
+            7
+        ]
+    },
+    {
+        "username": "C",
+        "priority": "3",
+        "timeRequest": [
+            4,
+            2,
+            3,
+            1,
+            5,
+            6,
+            7
+        ]
+    },
+    {
+        "username": "B",
+        "priority": "2",
+        "timeRequest": [
+            5,
+            2,
+            3,
+            4,
+            1,
+            6,
+            7
+        ]
+    },
+    {
+        "username": "A",
+        "priority": "1",
+        "timeRequest": [
+            6,
+            2,
+            3,
+            4,
+            5,
+            1,
+            7
+        ]
+    },
+    {
+        "username": "E",
+        "priority": "5",
+        "timeRequest": [
+            7,
+            2,
+            3,
+            4,
+            5,
+            6,
+            1
+        ]
+    }
+]
