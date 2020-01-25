@@ -1,32 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import { BrowserRouter, Route, Link } from 'react-router-dom';
 import './App.css';
+import {Admin} from './Components/Admin'
+import {User} from './Components/User'
 
-const x = "yeaser dances like a girl";
+class App extends Component{
 
-function App() {
+  constructor(props) {
+    super(props);
+    this.state = { 
 
+    };
+  }
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-    <p>{x}</p>
-        <input></input>
-      </header>
-    </div>
-  );
+  render() {
+    return (
+    <BrowserRouter>
+      <div className="app">
+        <ul>
+          <li><Link to="/admin">Admin</Link></li>
+          <li><Link to="/user">User</Link></li>
+        </ul>
+        <Route exact path="/admin" component={Admin} />
+        <Route path="/user" component={User} />
+      </div>
+    </BrowserRouter>
+    )
+  }
+
 }
 
 export default App;
+
+
