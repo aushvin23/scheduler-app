@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
-import './App.css';
-import {Admin} from './Components/Admin'
-import {User} from './Components/User'
+import Admin  from './Components/Admin';
+import User from './Components/User';
 
 class App extends Component{
 
@@ -22,7 +21,7 @@ class App extends Component{
           <li><Link to="/user">User</Link></li>
         </ul>
         <Route exact path="/admin" component={Admin} />
-        <Route path="/user" component={User} />
+        <Route exact path="/user" component={User} />
       </div>
     </BrowserRouter>
     )
