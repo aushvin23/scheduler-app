@@ -1,69 +1,32 @@
 import flask
 from flask import request, jsonify
 from flask_cors import CORS, cross_origin
+import ReadJson
+import RunAlgo
+import json
 
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
-app.config['CORS_HEADERS'] = 'Content-Type'
+headers=['Content-Type', 'Authorization','Access-Control-Allow-Headers', 'Origin', 'X-Requested-With', 'Accept','Access-Control-Allow-Origin']
+app.config['CORS_HEADERS'] = headers
 cors = CORS(app, resources={r"*": {"origins": "*"}})
+cross_origin(origin='*', headers=headers)
 
+employeeList = []
 
-cross_origin(origin='*', headers=['Content-Type', 'Authorization'])
-
-# Create some test data for our catalog in the form of a list of dictionaries.
-
-
-employeeList = [
-    {
-        "username": "A",
-        "priority": "1",
-        "timeRequest": [
-            1,2,3,4,5,6,7
-        ]
-    },
-    {
-        "username": "B",
-        "priority": "2",
-        "timeRequest": [
-            7,6,5,4,3,2,1
-        ]
-    },
-    {
-        "username": "C",
-        "priority": "3",
-        "timeRequest": [
-            4,3,2,1,5,6,7
-        ]
-    },
-    {
-        "username": "D",
-        "priority": "4",
-        "timeRequest": [
-            4,6,7,1,3,2,5
-        ]
-    },
-    {
-        "username": "E",
-        "priority": "5",
-        "timeRequest": [
-            6,7,1,5,4,3,2
-        ]
-    },
-    {
-        "username": "F",
-        "priority": "6",
-        "timeRequest": [
-            7,1,6,2,5,3,4
-        ]
-    },
-    {
-        "username": "G",
-        "priority": "7",
-        "timeRequest": [
-            1,2,3,4,5,7,6
-        ]
-    }
-    ]
+# curl -i -H "Content-Type: application/json" -X GET http://localhost:5000/api/v1/schedule
+@app.route('/api/v1/employee/all/schedule', methods=['GET'])
+def api_schedule():
+    # optimalcombo, mincost = RunAlgo.RunAlgo(employeeList)
+    # data = []
+    # for employee in optimalcombo:
+    #     data.append({
+    #         'username':employee.username,
+    #         'priority':str(employee.priority),
+    #         'timeRequest': employee.preference
+    #     })
+    # return jsonify(employeeList)
+    return 0
 
 @app.route('/', methods=['GET'])
 def home():
@@ -84,5 +47,17 @@ def create_employee():
     }
     employeeList.append(employee)
     return jsonify(employeeList), 201
+
+# $ curl -i -H "Content-Type: application/json" -X PUT -d '{"username":"aushvin","priority":5}' http://localhost:5000/api/v1/employee/all
+@app.route('/api/v1/employee/all', methods=['PUT'])
+def update_employee():
+    employee = {
+        "username": request.json.get('username',''),
+        "priority": request.json.get('priority',''),
+    }
+    for i in employeeList:
+        if i['username'] == employee['username']:
+            i['priority'] = employee['priority']
+    return jsonify(employeeList)
 
 app.run()

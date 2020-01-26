@@ -5,7 +5,7 @@ def cost(arr, employees):
     val = 0
     for i in range(0, length):
         employee = employees[arr[i]] #returns employee selected at position i
-        priority = employee.priority
+        priority = employee.priority or 1
         preference = employee.preference
         choice = preference[i] #did he get his top choice? Returns the preference for selected shift
         val = val + priority**choice #incrementing cost function

@@ -9,25 +9,33 @@ class User extends Component{
         dayList: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday','Sunday'],
         userInfo: {"username":"Aushvin Vasanth", "priority": "6", "timeRequest": [7,1,6,2,5,3,4]},
         userId: String,
-        Monday: String,
-        Tuesday: String,
-        
+        monday: Number,
+        tuesday: Number,
+        wednesday: Number,
+        thursday: Number,
+        friday: Number,
+        saturday: Number,
+        sunday: Number,
     };
   }
-
-  componentDidMount() {
-    Axios({
-      method: 'get',
-      url: `http://localhost:5000/api/v1/employee/all`,
-    }).then((res) => {
-        console.log(res);
-    })}
-
     submit = () => {
+        const userInfo = {
+            "username": this.state.userId,
+            "timeRequest": 
+                [   this.state.monday,
+                    this.state.tuesday,
+                    this.state.wednesday,
+                    this.state.thursday,
+                    this.state.friday,
+                    this.state.saturday,
+                    this.state.sunday
+                ]
+        }
+
         Axios({
             method:'post',
             url:'http://localhost:5000/api/v1/employee/all',
-            data: this.state.userInfo,
+            data: userInfo,
         }).then((res)=> {
             console.log(res)
         })
@@ -39,23 +47,54 @@ class User extends Component{
         })
     }
 
+    handleChangeMonday = (event) => {
+        this.setState({
+          monday: event.target.value
+        })
+    }
+
+    handleChangeTuesday = (event) => {
+        this.setState({
+          tuesday: event.target.value
+        })
+    }
+
+    handleChangeWednesday = (event) => {
+        this.setState({
+          wednesday: event.target.value
+        })
+    }
+
+    handleChangeThursday = (event) => {
+        this.setState({
+          thursday: event.target.value
+        })
+    }
+
+    handleChangeFriday = (event) => {
+        this.setState({
+          friday: event.target.value
+        })
+    }
+
+    handleChangeSaturday = (event) => {
+        this.setState({
+          saturday: event.target.value
+        })
+    }
+
+    handleChangeSunday = (event) => {
+        this.setState({
+          sunday: event.target.value
+        })
+    }
+
     handleSubmit = (event) => {
     event.preventDefault();
     }
+
   
-
-
-
   render() {
-
-    const calender = this.state.dayList.map((day, key)=> {
-        return (
-            <div>
-                <h3>{day}</h3>
-                <input></input>
-            </div>
-        )
-    });
     return (
         <div>
             <h3>User-Id</h3>
@@ -66,8 +105,70 @@ class User extends Component{
                 type="text"
                 placeholder="Type in your User ID"
              />
-            <button onClick={this.handleSubmit}>Submit</button>
-            <div>{calender}</div>
+
+            <h3>Monday</h3>
+            <input 
+                onChange={this.handleChangeMonday}
+                value={this.state.monday}
+                name="userInput"
+                type="text"
+                placeholder="Type in your ranking"
+             />
+
+            <h3>Tuesday</h3>
+            <input 
+                onChange={this.handleChangeTuesday}
+                value={this.state.tuesday}
+                name="userInput"
+                type="text"
+                placeholder="Type in your ranking"
+             />
+
+            <h3>Wednesday</h3>
+            <input 
+                onChange={this.handleChangeWednesday}
+                value={this.state.wednesday}
+                name="userInput"
+                type="text"
+                placeholder="Type in your ranking"
+             />
+
+            <h3>Thursday</h3>
+            <input 
+                onChange={this.handleChangeThursday}
+                value={this.state.thursday}
+                name="userInput"
+                type="text"
+                placeholder="Type in your ranking"
+             />
+
+            <h3>Friday</h3>
+            <input 
+                onChange={this.handleChangeFriday}
+                value={this.state.friday}
+                name="userInput"
+                type="text"
+                placeholder="Type in your ranking"
+             />
+
+            <h3>Saturday</h3>
+            <input 
+                onChange={this.handleChangeSaturday}
+                value={this.state.saturday}
+                name="userInput"
+                type="text"
+                placeholder="Type in your ranking"
+             />
+
+            <h3>Sunday</h3>
+            <input 
+                onChange={this.handleChangeSunday}
+                value={this.state.sunday}
+                name="userInput"
+                type="text"
+                placeholder="Type in your ranking"
+             />
+
             <button onClick={this.submit}>Submit Entry</button>
         </div>
     )
